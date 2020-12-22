@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="en-US">
+  <head>
+    <title>Locations Near Me | Google Maps JavaScript API Demo</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="style.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="allLocations.js"></script>
+    <script src="data.js"></script>
+  </head>
+  <body>
+    <div class="content">
+      <h1><img src="Chipotle-Logo.png" />Location Finder</h1>
+      <p class="disclaimer">Represents a subset of Chipotle locations, presented for demonstration purposes only.<br> There is a cluster of locations in MD, DC, and VA for testing smaller radius numbers.</p>
+
+      <form action="#" method="post">
+
+        <div>
+          <label for="property-type">Property Type:</label>
+          <select name="property-type" id="property-type">
+            <option value="all">All</option>
+            <option value="residence">Residence</option>
+            <option value="commercial">Commercial</option>
+          </select>
+        </div>
+
+        <div>
+          <label for="age">Building Age:</label>
+          <select name="property-type" id="property-type">
+            <option value="all">All</option>
+            <option value="five">5 years or less</option>
+            <option value="five-to-ten">5 - 10 years</option>
+            <option value="ten-to-fifteen">10 - 15 years</option>
+            <option value="fifteen-to-twenty">15 - 20 years</option>
+          </select>
+        </div>
+
+        <div>
+          <label for="bathroom">Bathrooms:</label>
+          <select name="bathroom" id="bathroom">
+            <option value="all">All</option>
+            <option value="five">5 years or less</option>
+            <option value="five-to-ten">5 - 10 years</option>
+            <option value="ten-to-fifteen">10 - 15 years</option>
+            <option value="fifteen-to-twenty">15 - 20 years</option>
+          </select>
+        </div>
+
+        <label for="maxRadius">Find locations within
+          <input name="maxRadius" id="maxRadius" type="number" value="5" min="1" />
+        </label>
+        <label for="userAddress"> miles of
+          <input name="userAddress" id="userAddress" type="text" placeholder="Your Address" value="333 W Camden St, Baltimore MD"/>
+        </label>
+        <button id="submitLocationSearch">Search</button>
+      </form>
+
+      <h2 id="location-search-alert">All Locations</h2>
+
+      <div id="locations-near-you-map"></div>
+
+      <div id="locations-near-you"></div>
+
+      <script defer src="https://maps.googleapis.com/maps/api/js?libraries=geometry&key=APIKEY&callback=createSearchableMap"></script>
+      <script src="createSearchableMap.js"></script>
+    </div>
+  </body>
+</html> 
