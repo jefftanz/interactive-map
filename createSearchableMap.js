@@ -1,35 +1,84 @@
 
 function test(){
 
-
   // TODO
   // Buttons to turn on / off things on the map. Show the county boundary on and off
   // Change popup text on the county boundary
   // Add drop downs and text inputs for updating data
   
-
 }
 
 function loadGeoData(){
 
-  var map = new google.maps.Map(document.getElementById('locations-near-you-map'), mapOptions);
-  map.data.loadGeoJson(
-    "https://raw.githubusercontent.com/jefftanz/map-testing/main/geo63005.json"
-  );
+  // var map = new google.maps.Map(document.getElementById('locations-near-you-map'), mapOptions);
+  // map.data.loadGeoJson("https://raw.githubusercontent.com/jefftanz/interactive-map/master/data/geo/63301.json");
+  // map.data.loadGeoJson("https://raw.githubusercontent.com/jefftanz/interactive-map/master/data/geo/63303.json");
+  // map.data.loadGeoJson("https://raw.githubusercontent.com/jefftanz/interactive-map/master/data/geo/63304.json");
+
+}
+
+function initMap() {
+
+  const map = new google.maps.Map(document.getElementById("locations-near-you-map"), {
+    zoom: 10,
+    center: { lat: 38.8106, lng: -90.6998 },
+  });
+
+  var displayFeature = 
+  {
+    "type": "FeatureCollection",
+    "features": []
+  }
+
+  displayFeature.features.push(featureData[63301]);
+  displayFeature.features.push(featureData[63303]);
+  displayFeature.features.push(featureData[63304]);
+  displayFeature.features.push(featureData[63332]);
+  displayFeature.features.push(featureData[63341]);
+  displayFeature.features.push(featureData[63348]);
+  displayFeature.features.push(featureData[63357]);
+  displayFeature.features.push(featureData[63366]);
+  displayFeature.features.push(featureData[63367]);
+  displayFeature.features.push(featureData[63368]);
+  displayFeature.features.push(featureData[63373]);
+  displayFeature.features.push(featureData[63376]);
+  displayFeature.features.push(featureData[63385]);
+  displayFeature.features.push(featureData[63386]);
+
+  
+  map.data.addGeoJson(displayFeature);
 
 }
 
 function createSearchableMap(locations = allLocations) {
 
-  test();
-
   var bounds = new google.maps.LatLngBounds();
   var mapOptions = {mapTypeId: 'roadmap'};
   var markers = [];
   var infoWindowContent = [];
-  var map = new google.maps.Map(document.getElementById('locations-near-you-map'), mapOptions);
+  // var map = new google.maps.Map(document.getElementById('locations-near-you-map'), mapOptions);
+  var map = new google.maps.Map(document.getElementById('locations-near-you-map'), {
+    zoom: 11,
+    center: { lat: 38.6270, lng: -90.1994 },
+  })
   
   map.setTilt(45);
+
+  var displayFeature = 
+  {
+    "type": "FeatureCollection",
+    "features": [
+
+    ]
+  }
+
+  displayFeature.features.push(featureData[63301]);
+  displayFeature.features.push(featureData[63303]);
+  
+
+  // map.data.loadGeoJson(features);
+  map.data.addGeoJson(displayFeature);
+  //map.data.loadGeoJson("https://raw.githubusercontent.com/jefftanz/interactive-map/master/data/geo/all.json");
   
   locations.forEach(function(location) {
     markers.push([location.name, location.lat, location.lng]);
@@ -70,6 +119,7 @@ function createSearchableMap(locations = allLocations) {
       map.setZoom(15);
     }
   }
+
 }
 
 function filterLocations() {
