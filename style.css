@@ -65,7 +65,25 @@ form {
   padding: 25px 10px;
 }
 
-input {
+select {
+  width: 100px;
+}
+
+.radio-cell{
+  width: 50px;
+}
+
+.name-cell{
+  width: 125px;
+  text-align: left;
+  padding-bottom: 7px;
+}
+
+.select-cell{
+  width: 100px;
+}
+
+/* input {
 	color: #000;
 	height: 1.8rem;
 	font-size: .9rem;
@@ -79,7 +97,7 @@ input[type=number] {
 
 input[type=text]  {
   width: 300px;
-}
+} */
 
 button {
 	background-color: #a81612;

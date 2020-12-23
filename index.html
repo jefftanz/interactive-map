@@ -9,23 +9,100 @@
     <script src="allLocations.js"></script>
     <script src="data.js"></script>
     <script src="features.js"></script>
+    <script src="./data/json/63301.js"></script>
+    <script src="./data/json/63303.js"></script>
+    <script src="./data/json/63304.js"></script>
+    <script src="./data/json/63332.js"></script>
+    <script src="./data/json/63341.js"></script>
+    <script src="./data/json/63348.js"></script>
+    <script src="./data/json/63357.js"></script>
+    <script src="./data/json/63366.js"></script>
+    <script src="./data/json/63367.js"></script>
+    <script src="./data/json/63368.js"></script>
+    <script src="./data/json/63373.js"></script>
+    <script src="./data/json/63376.js"></script>
+    <script src="./data/json/63385.js"></script>
+    <script src="./data/json/63386.js"></script>
   </head>
   <body>
     <div class="content">
-      <h1>Interactive Map</h1>
+      <h1>Property Map</h1>
 
       <form action="#" method="post">
 
-        <div>
-          <label for="property-type">Property Type:</label>
-          <select name="property-type" id="property-type">
-            <option value="all">All</option>
-            <option value="residence">Residence</option>
-            <option value="commercial">Commercial</option>
-          </select>
-        </div>
+        <!-- Radio Button: 
+        <input type="radio" 
+               checked=true
+               id="radioID" 
+               value="Geeks_radio"
+               name="Geek_radio" 
+               disabled>  -->
 
-        <div>
+
+        <!-- <input onclick="radioOne()" type="radio" name="type" checked="checked">
+        <label for="property-type">Property Type:</label>
+        <select name="property-type" id="property-type">
+          <option value="residence">Residence</option>
+          <option value="commercial">Commercial</option>
+        </select> -->
+
+        <!-- <br> -->
+
+        <!-- <input onclick="radioTwo()" type="radio" name="type">
+        <label for="property-age">Property Age</label>
+        <select name="property-age" id="property-age" disabled="disabled">
+          <option>Letters</option>
+          <option>Number</option>
+        </select> -->
+
+        <!-- <div class="test">Hello</div> -->
+
+        <!-- <br> -->
+
+        
+
+        <table style="margin-left: auto; margin-right: auto;">
+          <tr style="padding-top: 10px;">
+            <td class="radio-cell">
+              <input onclick="clickOne()" type="radio" name="radioOne" id="radioOne" checked="checked">
+            </td>
+            <td class="name-cell">Property Type</td>
+            <td class="select-cell">
+              <select name="property-type" id="property-type">
+                <option value="residence">Residence</option>
+                <option value="commercial">Commercial</option>
+              </select>
+            </td>
+          </tr>
+          <tr>
+            <td class="radio-cell">
+              <input onclick="clickTwo()" type="radio" name="radioTwo" id="radioTwo">
+            </td>
+            <td class="name-cell">Property Age</td>
+            <td class="select-cell">
+              <select name="property-age" id="property-age" disabled="disabled">
+                <option value="l25">&lt; 25</option>
+                <option value="g25">25 - 50</option>
+                <option value="g50">50 - 75</option>
+                <option value="g75">75 - 100</option>
+                <option value="g100">&gt; 100</option>
+              </select>
+            </td>
+          </tr>
+        </table>
+
+        <table style="margin-left: auto; margin-right: auto;">
+          <tr>
+            <td>
+              <button style="width: 200px;" id="submitLocationSearch">Search</button>
+            </td>
+          </tr>
+        </table>
+
+
+
+
+        <!-- <div>
           <label for="age">Building Age:</label>
           <select name="property-type" id="property-type">
             <option value="all">All</option>
@@ -45,24 +122,37 @@
             <option value="ten-to-fifteen">10 - 15 years</option>
             <option value="fifteen-to-twenty">15 - 20 years</option>
           </select>
-        </div>
+        </div> -->
 
-        <label for="maxRadius">Find locations within
+        <!-- <label for="maxRadius">Find locations within
           <input name="maxRadius" id="maxRadius" type="number" value="5" min="1" />
         </label>
         <label for="userAddress"> miles of
           <input name="userAddress" id="userAddress" type="text" placeholder="Your Address" value="333 W Camden St, Baltimore MD"/>
-        </label>
-        <button id="submitLocationSearch">Search</button>
+        </label> -->
+
+        
       </form>
 
-      <h2 id="location-search-alert">All Locations</h2>
+      <!-- <h2 id="location-search-alert">All Locations</h2> -->
 
       <div id="locations-near-you-map"></div>
 
       <div id="locations-near-you"></div>
 
-      <!-- <script defer src="https://maps.googleapis.com/maps/api/js?libraries=geometry&key=API_KEY&callback=createSearchableMap"></script> -->
+      <script>
+        function clickOne(){
+          document.getElementById('property-type').disabled = false; 
+          document.getElementById('property-age').disabled = true;
+          document.getElementById('radioTwo').checked = false;
+        }
+
+        function clickTwo(){
+          document.getElementById('property-type').disabled = true; 
+          document.getElementById('property-age').disabled = false;
+          document.getElementById('radioOne').checked = false;
+        }
+      </script>
 
       <script
         src="https://maps.googleapis.com/maps/api/js?key=API_KEY&callback=initMap&libraries=&v=weekly"
